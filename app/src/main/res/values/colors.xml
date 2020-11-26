@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="imperial_red">#FFEF233C</color>
     <color name="amaranth_red">#FFD90429</color>
     <color name="alice_blue">#FFEDF2F4</color>
     <color name="manatee">#FF8D99AE</color>
     <color name="space_cadet">#FF2B2D42</color>
+
 </resources>

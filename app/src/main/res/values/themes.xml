@@ -1,25 +1,51 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Theme.Confy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/imperial_red</item>
         <item name="colorPrimaryVariant">@color/amaranth_red</item>
         <item name="colorOnPrimary">@color/alice_blue</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/manatee</item>
         <item name="colorSecondaryVariant">@color/manatee</item>
         <item name="colorOnSecondary">@color/alice_blue</item>
-        <!-- Status bar color. -->
+        
+        <!-- Background color. -->
+        <item name="android:colorBackground">@color/alice_blue</item>
+        <item name="colorOnBackground">@color/space_cadet</item>
+
+        <!-- Surface color. -->
+        <item name="colorSurface">@color/alice_blue</item>
+        <item name="colorOnSurface">@color/space_cadet</item>
+        
+        <!-- System bars color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/alice_blue</item>
         <item name="android:navigationBarColor">@color/alice_blue</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">@color/space_cadet</item>
 
-        <item name="android:colorBackground">@color/alice_blue</item>
-        <item name="colorOnBackground">@color/space_cadet</item>
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Confy.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Confy.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Confy.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Confy.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Confy.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Confy.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Confy.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Confy.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Confy.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Confy.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Confy.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Confy.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Confy.Overline</item>
 
-        <item name="colorSurface">@color/alice_blue</item>
-        <item name="colorOnSurface">@color/space_cadet</item>
-        <!-- Customize your theme here. -->
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Confy.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Confy.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Confy.LargeComponent</item>
+        
     </style>
+    
 </resources>
