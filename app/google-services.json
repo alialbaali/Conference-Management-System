@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "411792250193",
+    "project_id": "confy-soft3101",
+    "storage_bucket": "confy-soft3101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411792250193:android:4ce66747d21f4d8fe26f70",
+        "android_client_info": {
+          "package_name": "com.confy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411792250193-72rrmc0h3ej2t5h9rbd615t1roue4aec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.confy",
+            "certificate_hash": "2761ced308630b9332b3b8d4d63ad9dbf7d59505"
+          }
+        },
+        {
+          "client_id": "411792250193-4c1f8c1lpcdqr0sgsi62o1ck58lcovtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTaEKJxJYuPE9VvPNxy5BnPI-4FHCmAgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411792250193-4c1f8c1lpcdqr0sgsi62o1ck58lcovtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
