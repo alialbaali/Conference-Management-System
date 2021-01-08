@@ -13,6 +13,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
     <!-- Conference -->
     <string name="create_conference_head">Creating new Conference</string>
     <string name="title">Title</string>
