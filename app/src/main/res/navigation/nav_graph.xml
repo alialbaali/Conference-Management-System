@@ -11,4 +11,10 @@
             android:name="com.confy.app.signing.SignUpFragment"
             android:label="fragment_sign_up"
             tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+            android:id="@+id/CreateConferenceFragment"
+            android:name="com.confy.app.conference.CreateConferenceFragment"
+            android:label="fragment_create_conference"
+            tools:layout="@layout/fragment_create_conference"/>
 </navigation>

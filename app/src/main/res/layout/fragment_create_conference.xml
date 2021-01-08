@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_normal"
+    tools:context=".app.conference.CreateConferenceFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/IntroTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_extra_large"
+        android:text="@string/create_conference_head" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_title"
+        style="@style/OutlinedTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:hint="@string/title"
+        app:startIconDrawable="@drawable/ic_round_person_24">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_title"
+        style="@style/TextInputEditText"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions|textCapWords|textAutoComplete|textAutoCorrect" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_description"
+        style="@style/OutlinedTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:hint="@string/description"
+        android:minHeight="68dp"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <!--et stands for Edit Text-->
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_create"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginVertical="@dimen/spacing_normal"
+        android:text="@string/create" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_description"
+        style="@style/TextInputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:imeOptions="actionNext"
+        android:inputType="textShortMessage|textAutoComplete|textAutoCorrect" />
+
+
+</FrameLayout>
