@@ -9,22 +9,11 @@
     <dimen name="spacing_extra_large">36dp</dimen>
 
     <!-- Elevation -->
-    <dimen name="elevation_no">0dp</dimen>
+    <dimen name="elevation_none">0dp</dimen>
     <dimen name="elevation_extra_small">1dp</dimen>
     <dimen name="elevation_small">2dp</dimen>
     <dimen name="elevation_normal">4dp</dimen>
     <dimen name="elevation_large">8dp</dimen>
     <dimen name="elevation_extra_large">16dp</dimen>
-
-    <!-- Text Size -->
-    <dimen name="size_extra_tiny">12sp</dimen>
-    <dimen name="size_tiny">14sp</dimen>
-    <dimen name="size_extra_small">16sp</dimen>
-    <dimen name="size_small">18sp</dimen>
-    <dimen name="size_normal">20sp</dimen>
-    <dimen name="size_large">22sp</dimen>
-    <dimen name="size_extra_large">24sp</dimen>
-    <dimen name="size_huge">26sp</dimen>
-    <dimen name="size_extra_huge">28sp</dimen>
 
 </resources>
