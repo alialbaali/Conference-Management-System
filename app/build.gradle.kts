@@ -36,11 +36,13 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation(Google.android.material)
+    implementation(AndroidX.constraintLayout)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.navigation:navigation-fragment:2.3.2")
-    implementation("androidx.navigation:navigation-ui:2.3.2")
+    implementation(AndroidX.Navigation.fragment)
+    implementation(AndroidX.Navigation.ui)
+    implementation(AndroidX.Lifecycle.liveData)
+    implementation(AndroidX.Lifecycle.viewModel)
     implementation(project(":data"))
     implementation(project(":domain"))
 
