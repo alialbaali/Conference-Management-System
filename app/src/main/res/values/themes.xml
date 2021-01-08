@@ -38,8 +38,6 @@
         <item name="textAppearanceBody1">@style/TextAppearance.Confy.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.Confy.Body2</item>
         <item name="textAppearanceButton">@style/TextAppearance.Confy.Button</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.Confy.Caption</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.Confy.Overline</item>
 
         <!--Material shape attributes-->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Confy.SmallComponent</item>

@@ -3,7 +3,7 @@
 
     <style name="ShapeAppearance.Confy.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/spacing_small</item>
+        <item name="cornerSize">@dimen/spacing_extra_small</item>
     </style>
 
     <style name="ShapeAppearance.Confy.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
@@ -13,7 +13,7 @@
 
     <style name="ShapeAppearance.Confy.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/spacing_large</item>
+        <item name="cornerSize">@dimen/spacing_normal</item>
     </style>
 
 </resources>

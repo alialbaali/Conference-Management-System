@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            style="@style/IntroTextView"
+            android:text="@string/sign_up_intro_text"
+            android:layout_marginBottom="@dimen/spacing_extra_large"
+            android:layout_height="wrap_content" />
+
     <!--til stands for Text Input Layout-->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_name"
@@ -71,6 +78,7 @@
     <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_up"
             style="@style/PrimaryButton"
+            android:layout_marginVertical="@dimen/spacing_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sign_up" />
@@ -79,7 +87,6 @@
             android:id="@+id/tv_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/spacing_normal"
             android:text="@string/have_account"
             android:textSize="?textAppearanceBody2" />
 
