@@ -15,19 +15,11 @@ import com.confy.databinding.FragmentSignInBinding;
 import com.confy.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignInFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SignInFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     FragmentSignInBinding binding;
-
     SigningViewModel viewModel;
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSignInBinding.inflate(inflater, container, false);
@@ -38,9 +30,6 @@ public class SignInFragment extends Fragment {
 
         binding.btnSignIn.setOnClickListener(view -> Snackbar.make(binding.getRoot(), "Sign In Button clicked", Snackbar.LENGTH_INDEFINITE)
                 .show());
-
-
-
         return binding.getRoot();
     }
 
@@ -57,8 +46,6 @@ public class SignInFragment extends Fragment {
 
     private void setupTextListeners() {
 
-
-        
         binding.etEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,6 +79,5 @@ public class SignInFragment extends Fragment {
 
             }
         });
-
     }
 }
