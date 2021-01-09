@@ -19,7 +19,7 @@ public class Conference {
     LocalDateTime endDate;
     Paper[] papers;
     User[] users;
-    String invitationLink;
+    String InvitationLink;
     boolean started;
     int minimumGrade;
 
@@ -46,7 +46,7 @@ public class Conference {
     }
 
     public String getInvitationLink() {
-        return invitationLink;
+        return InvitationLink;
     }
 
     public boolean isStarted() {
