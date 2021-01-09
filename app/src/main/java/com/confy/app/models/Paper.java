@@ -1,25 +1,25 @@
-package com.confy.domain.models;
+package com.confy.app.models;
 
 import androidx.room.PrimaryKey;
 
 public class Paper {
     @PrimaryKey
     String id;
-    User Author;
+    String authorId;
     boolean isSubmitted;
     boolean isGraded;
     boolean isApproved;
-    int Grade;
+    int grade;
 
-    public Paper(User author, boolean isSubmitted, boolean isGraded, boolean isApproved, int grade) {
-        Author = author;
+    public Paper(String authorId, boolean isSubmitted, boolean isGraded, boolean isApproved, int grade) {
+        this.authorId = authorId;
         this.isSubmitted = isSubmitted;
         this.isGraded = isGraded;
         this.isApproved = isApproved;
-        Grade = grade;
+        this.grade = grade;
     }
 
-    public User getAuthor() { return Author; }
+    public String getAuthor() { return authorId; }
 
     public boolean isSubmitted() { return isSubmitted; }
 
@@ -27,5 +27,5 @@ public class Paper {
 
     public boolean isApproved() { return isApproved; }
 
-    public int getGrade() { return Grade; }
+    public int getGrade() { return grade; }
 }

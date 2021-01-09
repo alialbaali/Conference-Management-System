@@ -1,4 +1,4 @@
-package com.confy.domain.models;
+package com.confy.app.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,16 +6,16 @@ import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
 
-@Entity(tableName = "conferences")
+//@Entity(tableName = "conferences")
 public class Conference {
 
-    @PrimaryKey
+//    @PrimaryKey
     String id;
     String name;
     String description;
-    @ColumnInfo(name = "start_date")
+//    @ColumnInfo(name = "start_date")
     LocalDateTime startDate;
-    @ColumnInfo(name = "end_date")
+//    @ColumnInfo(name = "end_date")
     LocalDateTime endDate;
     Paper[] papers;
     User[] users;
