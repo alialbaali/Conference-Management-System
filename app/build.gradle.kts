@@ -46,8 +46,6 @@ dependencies {
     implementation(AndroidX.recyclerView)
     implementation(project(":data"))
     implementation(project(":domain"))
-    implementation("com.android.support.recyclerview-v7:23.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
 
     testImplementation("junit:junit:4.13.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
