@@ -16,4 +16,12 @@
     <dimen name="elevation_large">8dp</dimen>
     <dimen name="elevation_extra_large">16dp</dimen>
 
+
+
+    <!-- List -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="ic_clear_margin">56dp</dimen>
+
+
 </resources>
