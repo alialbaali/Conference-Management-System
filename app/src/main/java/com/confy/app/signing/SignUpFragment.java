@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.confy.app.R;
 import com.confy.app.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
+
+import timber.log.Timber;
 
 public class SignUpFragment extends Fragment {
     FragmentSignUpBinding binding;
@@ -27,26 +31,66 @@ public class SignUpFragment extends Fragment {
         setupObservers();
         setupTextListeners();
 
-        binding.btnSignUp.setOnClickListener(view -> Snackbar.make(binding.getRoot(), "Sign up Button clicked", Snackbar.LENGTH_INDEFINITE)
-                .show());
+        binding.btnSignUp.setOnClickListener(view -> {
+                    String name = binding.etName.getText().toString();
+                    String email = binding.etEmail.getText().toString();
+                    String password = binding.etPassword.getText().toString();
 
-        binding.tvSignIn.setOnClickListener(view -> Snackbar.make(binding.getRoot(), "Sign In Text clicked", Snackbar.LENGTH_INDEFINITE)
-                .show());
+                    Timber.i(name);
+
+                    if (name.isEmpty())
+                        binding.tilName.setError(getString(R.string.empty_name));
+                    if (email.isEmpty())
+                        binding.tilEmail.setError(getString(R.string.empty_email));
+                    if (password.isEmpty())
+                        binding.tilPassword.setError(getString(R.string.empty_password));
+                    if (!(name.isEmpty() && email.isEmpty() && password.isEmpty()))
+                        viewModel.signUp();
+                }
+        );
+
+        binding.tvSignIn.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(SignUpFragmentDirections.actionSignUpFragmentToSignInFragment())
+        );
 
         return binding.getRoot();
     }
 
     private void setupObservers() {
-        viewModel.getName().observe(getViewLifecycleOwner(), name ->
-                binding.etName.setText(name)
+        viewModel.getName().observe(getViewLifecycleOwner(), name -> {
+            binding.etName.setText(name);
+            if (!name.isEmpty()) {
+                binding.tilName.setError(null);
+            }
+        });
+
+        viewModel.getEmail().observe(getViewLifecycleOwner(), email -> {
+                    binding.etEmail.setText(email);
+                    if (!email.isEmpty()) {
+                        binding.tilEmail.setError(null);
+                    }
+                }
         );
 
-        viewModel.getEmail().observe(getViewLifecycleOwner(), email ->
-                binding.etEmail.setText(email)
+        viewModel.getPassword().observe(getViewLifecycleOwner(), password -> {
+                    binding.etPassword.setText(password);
+                    if (!password.isEmpty()) {
+                        binding.tilPassword.setError(null);
+                    }
+                }
         );
-
-        viewModel.getPassword().observe(getViewLifecycleOwner(), password ->
-                binding.etPassword.setText(password)
+        viewModel.shouldNavigate().observe(getViewLifecycleOwner(), value -> {
+                    if (value) {
+                        Snackbar.make(binding.getRoot(), "Congrats you signed up!", Snackbar.LENGTH_INDEFINITE)
+                                .show();
+                    }
+                }
+//                        NavHostFragment.findNavController(this).navigate()
+        );
+        viewModel.getError().observe(getViewLifecycleOwner(), error ->
+                Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT)
+                        .show()
         );
     }
 

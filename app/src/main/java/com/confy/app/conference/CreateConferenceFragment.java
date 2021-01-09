@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
-import com.confy.app.conference.ConferenceViewModel;
 import com.confy.app.databinding.FragmentCreateConferenceBinding;
 import com.google.android.material.snackbar.Snackbar;
 

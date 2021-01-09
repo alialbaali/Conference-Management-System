@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.confy.app.databinding.FragmentSignInBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -18,9 +19,9 @@ public class SignInFragment extends Fragment {
 
     FragmentSignInBinding binding;
     SigningViewModel viewModel;
-    
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSignInBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(SigningViewModel.class);
 
@@ -29,6 +30,12 @@ public class SignInFragment extends Fragment {
 
         binding.btnSignIn.setOnClickListener(view -> Snackbar.make(binding.getRoot(), "Sign In Button clicked", Snackbar.LENGTH_INDEFINITE)
                 .show());
+
+        binding.tvSignUp.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
+        );
+
         return binding.getRoot();
     }
 

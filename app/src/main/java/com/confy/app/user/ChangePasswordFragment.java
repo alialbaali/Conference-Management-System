@@ -1,4 +1,4 @@
-package com.confy.app.User;
+package com.confy.app.user;
 
 import android.os.Bundle;
 import android.text.Editable;
