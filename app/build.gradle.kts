@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.confy"
-        minSdkVersion(23)
+        minSdkVersion(24)
         targetSdkVersion(30)
         versionCode = 1
         versionName = "0.0.1"
@@ -43,6 +43,7 @@ dependencies {
     implementation(AndroidX.Navigation.ui)
     implementation(AndroidX.Lifecycle.liveData)
     implementation(AndroidX.Lifecycle.viewModel)
+    implementation(AndroidX.recyclerView)
     implementation(project(":data"))
     implementation(project(":domain"))
 

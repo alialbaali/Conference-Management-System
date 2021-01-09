@@ -11,13 +11,13 @@
     <style name="OutlinedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">?colorSurface</item>
         <item name="startIconTint">?colorSecondary</item>
+        <item name="boxStrokeColor">?colorSecondaryVariant</item>
+        <item name="hintTextColor">?colorSecondaryVariant</item>
         <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
     </style>
 
     <style name="PasswordTextInputLayout" parent="OutlinedTextInputLayout">
         <item name="passwordToggleEnabled">true</item>
-        <item name="helperTextEnabled">true</item>
-        <item name="helperText">@string/password_helper_text</item>
         <item name="startIconDrawable">@drawable/ic_round_lock_24</item>
         <item name="passwordToggleTint">?colorSecondary</item>
     </style>
