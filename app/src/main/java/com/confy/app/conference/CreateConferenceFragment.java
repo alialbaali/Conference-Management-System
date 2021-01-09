@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.confy.app.signing.SigningViewModel;
+import com.confy.app.conference.ConferenceViewModel;
 import com.confy.databinding.FragmentCreateConferenceBinding;
-import com.confy.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 /**
@@ -25,12 +24,12 @@ public class CreateConferenceFragment extends Fragment {
 
     FragmentCreateConferenceBinding binding;
 
-    CreateConferenceViewModel viewModel;
+    ConferenceViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCreateConferenceBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(CreateConferenceViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ConferenceViewModel.class);
 
         setupObservers();
         setupTextListeners();

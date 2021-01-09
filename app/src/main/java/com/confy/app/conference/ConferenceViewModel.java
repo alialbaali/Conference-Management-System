@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+import com.confy.domain.repositories.ConferenceRepository;
 
-import com.confy.domain.repositories.UserRepository;
-
-public class CreateConferenceViewModel extends ViewModel {
+public class ConferenceViewModel extends ViewModel {
 
     private final MutableLiveData<String> mutableTitle = new MutableLiveData<>("");
     private final MutableLiveData<String> mutableDescription = new MutableLiveData<>("");
