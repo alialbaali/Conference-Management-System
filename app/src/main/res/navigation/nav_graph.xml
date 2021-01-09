@@ -18,7 +18,14 @@
             android:id="@+id/SignInFragment"
             android:name="com.confy.app.signing.SignInFragment"
             android:label="fragment_sign_in"
-            tools:layout="@layout/fragment_sign_in" />
+            tools:layout="@layout/fragment_sign_in" >
+        <action
+                android:id="@+id/action_SignInFragment_to_signUpFragment"
+                app:destination="@id/signUpFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@id/signUpFragment"
+                app:popUpToInclusive="true" />
+    </fragment>
 
 
     <fragment

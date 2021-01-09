@@ -1,97 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ll"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="@dimen/spacing_normal"
-        tools:context="signing.SignUpFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        tools:context="signing.SignUpFragment">
 
-    <com.google.android.material.textview.MaterialTextView
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.confy.app.signing.SigningViewModel" />
+    </data>
+
+
+    <LinearLayout
+            android:id="@+id/ll"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
             android:layout_width="match_parent"
-            style="@style/IntroTextView"
-            android:text="@string/sign_up_intro_text"
-            android:layout_marginBottom="@dimen/spacing_extra_large"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
-    <!--til stands for Text Input Layout-->
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_name"
-            style="@style/OutlinedTextInputLayout"
-            android:layout_marginVertical="@dimen/spacing_small"
-            app:startIconDrawable="@drawable/ic_round_person_24"
-            android:hint="@string/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_name"
-                style="@style/TextInputEditText"
+        <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:inputType="textPersonName|textCapWords|textAutoComplete|textAutoCorrect"
-                android:imeOptions="actionNext"
+                style="@style/IntroTextView"
+                android:text="@string/sign_up_intro_text"
+                android:layout_marginBottom="@dimen/spacing_extra_large"
                 android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            style="@style/OutlinedTextInputLayout"
-            app:startIconDrawable="@drawable/ic_round_email_24"
-            android:id="@+id/til_email"
-            android:hint="@string/email"
-            android:layout_width="match_parent"
-            android:layout_marginVertical="@dimen/spacing_small"
-            android:layout_height="wrap_content">
-
-        <!--et stands for Edit Text-->
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                style="@style/TextInputEditText"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress|textAutoComplete|textAutoCorrect"
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name"
+                style="@style/OutlinedTextInputLayout"
+                android:layout_marginVertical="@dimen/spacing_small"
+                app:startIconDrawable="@drawable/ic_round_person_24"
+                android:hint="@string/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_name"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:text="@={viewModel.name}"
+                    android:inputType="textPersonName|textCapWords|textAutoComplete|textAutoCorrect"
+                    android:imeOptions="actionNext"
+                    android:layout_height="wrap_content" />
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_password"
-            style="@style/PasswordTextInputLayout"
-            app:helperTextEnabled="true"
-            app:helperText="@string/password_helper_text"
-            android:layout_marginVertical="@dimen/spacing_small"
-            android:layout_width="match_parent"
-            android:hint="@string/password"
-            android:layout_height="wrap_content">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
-                style="@style/TextInputEditText"
-                android:inputType="textPassword"
-                android:imeOptions="actionDone"
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/OutlinedTextInputLayout"
+                app:startIconDrawable="@drawable/ic_round_email_24"
+                android:id="@+id/til_email"
+                android:hint="@string/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_marginVertical="@dimen/spacing_small"
+                android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    style="@style/TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:text="@={viewModel.email}"
+                    android:inputType="textEmailAddress|textAutoComplete|textAutoCorrect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_sign_up"
-            style="@style/PrimaryButton"
-            android:layout_marginVertical="@dimen/spacing_normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_up" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/have_account"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAppearance="?attr/textAppearanceBody2" />
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                style="@style/PasswordTextInputLayout"
+                app:helperTextEnabled="true"
+                app:helperText="@string/password_helper_text"
+                android:layout_marginVertical="@dimen/spacing_small"
+                android:layout_width="match_parent"
+                android:hint="@string/password"
+                android:layout_height="wrap_content">
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    style="@style/TextInputEditText"
+                    android:text="@={viewModel.password}"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sign_up"
+                style="@style/PrimaryButton"
+                android:layout_marginVertical="@dimen/spacing_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/have_account"
+                android:clickable="true"
+                android:focusable="true"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+    </LinearLayout>
+</layout>

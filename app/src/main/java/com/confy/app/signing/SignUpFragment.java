@@ -1,8 +1,6 @@
 package com.confy.app.signing;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +14,6 @@ import com.confy.app.R;
 import com.confy.app.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import timber.log.Timber;
-
 public class SignUpFragment extends Fragment {
     FragmentSignUpBinding binding;
 
@@ -27,16 +23,15 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSignUpBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(SigningViewModel.class);
+        binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
 
         setupObservers();
-        setupTextListeners();
 
         binding.btnSignUp.setOnClickListener(view -> {
                     String name = binding.etName.getText().toString();
                     String email = binding.etEmail.getText().toString();
                     String password = binding.etPassword.getText().toString();
-
-                    Timber.i(name);
 
                     if (name.isEmpty())
                         binding.tilName.setError(getString(R.string.empty_name));
@@ -59,14 +54,12 @@ public class SignUpFragment extends Fragment {
 
     private void setupObservers() {
         viewModel.getName().observe(getViewLifecycleOwner(), name -> {
-            binding.etName.setText(name);
             if (!name.isEmpty()) {
                 binding.tilName.setError(null);
             }
         });
 
         viewModel.getEmail().observe(getViewLifecycleOwner(), email -> {
-                    binding.etEmail.setText(email);
                     if (!email.isEmpty()) {
                         binding.tilEmail.setError(null);
                     }
@@ -74,7 +67,6 @@ public class SignUpFragment extends Fragment {
         );
 
         viewModel.getPassword().observe(getViewLifecycleOwner(), password -> {
-                    binding.etPassword.setText(password);
                     if (!password.isEmpty()) {
                         binding.tilPassword.setError(null);
                     }
@@ -92,62 +84,6 @@ public class SignUpFragment extends Fragment {
                 Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT)
                         .show()
         );
-    }
-
-    private void setupTextListeners() {
-
-        binding.etName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setName(s.toString());
-                binding.etName.setSelection(s.length());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-        binding.etEmail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setEmail(s.toString());
-                binding.etEmail.setSelection(s.length());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        binding.etPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setPassword(s.toString());
-                binding.etPassword.setSelection(s.length());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
     }
 
 }

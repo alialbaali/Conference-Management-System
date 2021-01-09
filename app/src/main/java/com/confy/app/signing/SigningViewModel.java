@@ -1,36 +1,39 @@
 package com.confy.app.signing;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.confy.data.ServiceLocator;
-import com.confy.domain.Result;
-import com.confy.domain.models.User;
-import com.confy.domain.repositories.UserRepository;
+import com.google.firebase.auth.FirebaseAuth;
 
-import timber.log.Timber;
 
 public final class SigningViewModel extends ViewModel {
-    UserRepository userRepository = ServiceLocator.getUserRepository();
 
-    private final MutableLiveData<String> mutableName = new MutableLiveData<>("");
-    private final MutableLiveData<String> mutableEmail = new MutableLiveData<>("");
-    private final MutableLiveData<String> mutablePassword = new MutableLiveData<>("");
+    @NonNull
+    private final MutableLiveData<String> name = new MutableLiveData<>("");
+    @NonNull
+    private final MutableLiveData<String> email = new MutableLiveData<>("");
+    @NonNull
+    private final MutableLiveData<String> password = new MutableLiveData<>("");
+    @NonNull
     private final MutableLiveData<String> error = new MutableLiveData<>("");
+    @NonNull
     private final MutableLiveData<Boolean> shouldNavigate = new MutableLiveData<>(false);
 
-    LiveData<String> getName() {
-        return Transformations.distinctUntilChanged(mutableName);
+    @NonNull
+    public MutableLiveData<String> getName() {
+        return name;
     }
 
-    public LiveData<String> getEmail() {
-        return Transformations.distinctUntilChanged(mutableEmail);
+    @NonNull
+    public MutableLiveData<String> getEmail() {
+        return email;
     }
 
-    public LiveData<String> getPassword() {
-        return Transformations.distinctUntilChanged(mutablePassword);
+    @NonNull
+    public MutableLiveData<String> getPassword() {
+        return password;
     }
 
     LiveData<String> getError() {
@@ -42,41 +45,58 @@ public final class SigningViewModel extends ViewModel {
     }
 
     void setName(String value) {
-        mutableName.setValue(value);
+        name.setValue(value);
     }
 
     void setEmail(String value) {
-        mutableEmail.setValue(value);
+        email.setValue(value);
     }
 
     void setPassword(String value) {
-        mutablePassword.setValue(value);
+        password.setValue(value);
     }
 
     void signUp() {
-        System.out.println("PRINTED");
         try {
-            System.out.println(getName().getValue());
-            System.out.println(getEmail().getValue());
-            System.out.println(getPassword().getValue());
-            Result<User> result = userRepository.signUp(new User(getName().getValue(), getEmail().getValue(), getPassword().getValue()));
-            if (result.isSuccess) {
-                shouldNavigate.setValue(true);
-            } else {
-                error.setValue(result.exceptionOrNull().getMessage());
+            String email = getEmail().getValue();
+            String password = getPassword().getValue();
+            if (email != null && password != null) {
+                FirebaseAuth.getInstance()
+                        .createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        shouldNavigate.setValue(true);
+                                    } else {
+                                        error.setValue(task.getException().getMessage());
+                                    }
+                                }
+                        )
+                ;
             }
+            shouldNavigate.setValue(true);
         } catch (Throwable exception) {
-            error.setValue(exception.getMessage());
+//            error.setValue(exception.getMessage());
         }
-
     }
 
     void signIn() {
-        Result<User> result = userRepository.signIn(new User(getEmail().getValue(), getPassword().getValue()));
-        if (result.isSuccess) {
+        try {
+            String email = getEmail().getValue();
+            String password = getPassword().getValue();
+            if (email != null && password != null) {
+                FirebaseAuth.getInstance()
+                        .signInWithEmailAndPassword(email, password)
+                        .addOnSuccessListener(authResult ->
+                                shouldNavigate.setValue(true)
+                        )
+                        .addOnFailureListener(exception ->
+                                error.setValue(exception.getMessage())
+                        )
+                ;
+            }
             shouldNavigate.setValue(true);
-        } else {
-            error.setValue(result.exceptionOrNull().getMessage());
+        } catch (Throwable exception) {
+            error.setValue(exception.getMessage());
         }
     }
 

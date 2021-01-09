@@ -1,6 +1,5 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
-include(":data")
 pluginManagement {
     repositories {
         gradlePluginPortal()
