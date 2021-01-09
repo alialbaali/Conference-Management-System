@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.confy.databinding.FragmentSignUpBinding;
+import com.confy.app.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 public class SignUpFragment extends Fragment {
