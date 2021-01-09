@@ -5,7 +5,7 @@
         android:orientation="vertical"
         android:layout_gravity="bottom"
         android:padding="@dimen/spacing_normal"
-        tools:context="signing.SignUpFragment"
+        tools:context="conference.CreateConferenceFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
