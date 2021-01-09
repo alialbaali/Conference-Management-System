@@ -9,7 +9,7 @@
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/manatee</item>
-        <item name="colorSecondaryVariant">@color/manatee</item>
+        <item name="colorSecondaryVariant">@color/space_cadet</item>
         <item name="colorOnSecondary">@color/alice_blue</item>
         
         <!-- Background color. -->

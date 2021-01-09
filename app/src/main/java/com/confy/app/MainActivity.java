@@ -4,7 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.confy.databinding.ActivityMainBinding;
+import com.confy.app.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
