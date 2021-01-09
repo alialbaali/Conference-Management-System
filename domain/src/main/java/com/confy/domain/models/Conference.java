@@ -17,6 +17,11 @@ public class Conference {
     LocalDateTime startDate;
     @ColumnInfo(name = "end_date")
     LocalDateTime endDate;
+    Paper[] papers;
+    User[] users;
+    String invitationLink;
+    boolean started;
+    int minimumGrade;
 
     public Conference(String name, String description) {
         this.name = name;
@@ -30,6 +35,26 @@ public class Conference {
 
     public String getDescription() {
         return description;
+    }
+
+    public Paper[] getPapers() {
+        return papers;
+    }
+
+    public User[] getUsers() {
+        return users;
+    }
+
+    public String getInvitationLink() {
+        return invitationLink;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public int getMinimumGrade() {
+        return minimumGrade;
     }
 
     // Add the other fields...
