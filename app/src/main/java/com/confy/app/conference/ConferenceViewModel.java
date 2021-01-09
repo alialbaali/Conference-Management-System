@@ -10,6 +10,7 @@ public class ConferenceViewModel extends ViewModel {
 
     private final MutableLiveData<String> mutableTitle = new MutableLiveData<>("");
     private final MutableLiveData<String> mutableDescription = new MutableLiveData<>("");
+    private final MutableLiveData<String> mutableInvitationLink = new MutableLiveData<>("");
     private final MutableLiveData<String> error = new MutableLiveData<>("");
 
 
@@ -18,6 +19,8 @@ public class ConferenceViewModel extends ViewModel {
     }
 
     LiveData<String> getDescription() { return Transformations.distinctUntilChanged(mutableDescription); }
+
+    LiveData<String> getInvitationLink() { return Transformations.distinctUntilChanged(mutableInvitationLink); }
 
     LiveData<String> getError() {
         return error;
@@ -29,6 +32,10 @@ public class ConferenceViewModel extends ViewModel {
 
     void setDescription(String value) {
         mutableDescription.setValue(value);
+    }
+
+    void setInvitationLink(String value) {
+        mutableInvitationLink.setValue(value);
     }
 
     void CreateConference() {
