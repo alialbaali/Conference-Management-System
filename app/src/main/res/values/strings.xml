@@ -22,5 +22,9 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="create">Create Conference</string>
+    <string name="join">Join Conference</string>
+    <string name="invitationLink">Enter Invite Link</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
