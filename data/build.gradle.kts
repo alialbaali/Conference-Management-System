@@ -36,6 +36,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     api("com.jakewharton.timber:timber:4.7.1")
     implementation(AndroidX.Room.runtime)
+    annotationProcessor(AndroidX.Room.compiler)
 
 }
 

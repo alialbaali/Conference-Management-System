@@ -6,7 +6,7 @@ dependencies {
 
     api(AndroidX.Room.common)
     api(AndroidX.Room.rxJava2)
-    api("io.reactivex.rxjava3:rxjava:3.0.9")
+//    api("io.reactivex.rxjava3:rxjava:2.2.19")
 
 }
 
