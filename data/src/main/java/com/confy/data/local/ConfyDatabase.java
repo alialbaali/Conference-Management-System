@@ -6,27 +6,30 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.confy.data.local.source.LocalConferenceDataSource;
 import com.confy.data.local.source.LocalUserDataSource;
 import com.confy.domain.models.Conference;
 
 @Database(entities = {Conference.class}, version = 1, exportSchema = false)
 public abstract class ConfyDatabase extends RoomDatabase {
 
-    public LocalUserDataSource localUserDataSource;
+    private static final String DATABASE_NAME = "Confy Database";
 
-    public LocalConferenceDataSource localConferenceDataSource;
+    public ConferenceDao conferenceDao;
 
-    private static ConfyDatabase INSTANCE = null;
+    private static volatile ConfyDatabase INSTANCE;
 
     public LocalUserDataSource getLocalUserDataSource() {
-        return localUserDataSource;
+        return (LocalUserDataSource) conferenceDao;
     }
 
     public static ConfyDatabase getInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context, ConfyDatabase.class, "Confy Database")
-                    .build();
+            synchronized (ConfyDatabase.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ConfyDatabase.class, DATABASE_NAME)
+                            .build();
+                }
+            }
         }
 
         return INSTANCE;
