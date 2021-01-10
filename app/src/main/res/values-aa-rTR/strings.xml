@@ -31,4 +31,11 @@
     <string name="update_profile">Profili Güncelle</string>
     <string name="change_password">Şifreyi Değiştir</string>
     <string name="update_password">Şifreyi Güncelle</string>
+
+    <!-- Paper -->
+    <string name="paper"> Henüz bir şey yüklemediniz.</string>
+    <string name="update_paper"> Yüklemeyi Güncelle</string>
+    <string name="download_paper"> Yüklemeyi İndir.</string>
+    <string name="upload_paper"> Yükleme</string>
+    <string name="go_back"> Konferansa geri dön</string>
 </resources>
