@@ -33,6 +33,7 @@ public class ConferenceItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Conference conference) {
-
+        binding.setConference(conference);
+        binding.executePendingBindings();
     }
 }
