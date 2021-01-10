@@ -12,6 +12,8 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
     <string name="password_helper_text">Password must contain at least 8 characters with 1 number.</string>
     <string name="sign_up_intro_text">Welcome to Confy, where people meet, review and have conferences.</string>
     <string name="empty_name">Name can\'t be empty</string>
@@ -26,6 +28,8 @@
     <string name="join">Join Conference</string>
     <string name="invitation_link">Invitation link</string>
     <string name="change_profile">Change profile</string>
+    <string name="update_profile">Update profile</string>
     <string name="change_password">Change password</string>
+    <string name="update_password">Update password</string>
 
 </resources>
