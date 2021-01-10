@@ -7,20 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.confy.app.databinding.FragmentUserBinding;
+import com.confy.app.BaseBottomSheetDialogFragment;
+import com.confy.app.databinding.FragmentChangePasswordBinding;
 
-public class UserFragment extends Fragment {
-    FragmentUserBinding binding;
+public class ChangePasswordBottomSheetDialog extends BaseBottomSheetDialogFragment {
+    FragmentChangePasswordBinding binding;
     UserViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentUserBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        binding = FragmentChangePasswordBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(getViewLifecycleOwner());
         binding.setViewModel(viewModel);
 

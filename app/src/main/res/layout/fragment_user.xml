@@ -1,88 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/cool"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<layout>
 
-    <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/img"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="@dimen/spacing_normal"
-            app:shapeAppearance="?shapeAppearanceLargeComponent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+    <data>
 
-    <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toEndOf="@id/img"
-            android:text="Ali Albaali"
-            android:layout_margin="@dimen/spacing_normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_email"
-            android:textAppearance="?textAppearanceHeadline1"
-            android:textColor="?colorSecondaryVariant"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@+id/img" />
+        <variable
+                name="viewModel"
+                type="com.confy.app.user.UserViewModel" />
+    </data>
 
-    <TextView
-            android:id="@+id/tv_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            android:layout_margin="@dimen/spacing_normal"
-            android:layout_width="0dp"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:textColor="?attr/colorSecondary"
-            android:text="alialbaali@gmail.com"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/img" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/cool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <LinearLayout
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:orientation="vertical"
-            android:id="@+id/ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp">
+        <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="@dimen/spacing_normal"
+                app:shapeAppearance="?shapeAppearanceLargeComponent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_change_profile"
-                style="@style/ProfileItem"
-                android:layout_width="match_parent"
-                android:text="@string/change_profile"
+        <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toEndOf="@id/img"
+                android:text="@{viewModel.user.name}"
+                android:layout_margin="@dimen/spacing_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_email"
+                android:textAppearance="?textAppearanceHeadline1"
+                android:textColor="?colorSecondaryVariant"
                 android:layout_height="wrap_content"
-                app:drawableStartCompat="@drawable/ic_round_person_24" />
+                app:layout_constraintTop_toTopOf="@+id/img" />
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_change_password"
-                style="@style/ProfileItem"
-                android:layout_width="match_parent"
-                android:text="@string/change_password"
+        <TextView
+                android:id="@+id/tv_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                android:layout_margin="@dimen/spacing_normal"
+                android:layout_width="0dp"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="?attr/colorSecondary"
+                android:text="@{viewModel.user.email}"
                 android:layout_height="wrap_content"
-                app:drawableStartCompat="@drawable/ic_round_lock_24" />
+                app:layout_constraintBottom_toBottomOf="@+id/img" />
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:orientation="vertical"
+                android:id="@+id/ll"
+                android:layout_width="0dp"
+                android:layout_height="0dp">
 
-            <com.google.android.material.button.MaterialButton
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_change_profile"
+                    style="@style/ProfileItem"
                     android:layout_width="match_parent"
-                    android:layout_margin="@dimen/spacing_normal"
-                    style="@style/PrimaryButton"
-                    android:layout_gravity="bottom"
-                    android:text="@string/sign_out"
-                    android:layout_height="wrap_content" />
+                    android:text="@string/change_profile"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_round_person_24" />
 
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_change_password"
+                    style="@style/ProfileItem"
+                    android:layout_width="match_parent"
+                    android:text="@string/change_password"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_round_lock_24" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/spacing_normal"
+                        style="@style/PrimaryButton"
+                        android:layout_gravity="bottom"
+                        android:text="@string/sign_out"
+                        android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
