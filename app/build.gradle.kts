@@ -50,6 +50,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:26.2.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-database")
+
     api("com.jakewharton.timber:timber:4.7.1")
     implementation(AndroidX.Room.runtime)
     annotationProcessor(AndroidX.Room.compiler)

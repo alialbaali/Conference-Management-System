@@ -6,15 +6,35 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.confy.app.R;
+import com.confy.app.databinding.FragmentConferenceListBinding;
+import com.confy.app.models.Conference;
 
-public class ConferenceListFragment extends Fragment {
+public class ConferenceListFragment extends Fragment implements ConferenceListAdapter.ItemListener {
+    FragmentConferenceListBinding binding;
+    ConferenceListViewModel viewModel;
+    ConferenceListAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentConferenceListBinding.inflate(inflater, container, false);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+        viewModel = new ViewModelProvider(this).get(ConferenceListViewModel.class);
+        adapter = new ConferenceListAdapter(this);
 
-        return inflater.inflate(R.layout.fragment_conference_list, container, false);
+        viewModel.getConferences().observe(getViewLifecycleOwner(), conferences -> {
+            adapter.submitList(conferences);
+        });
+
+        return binding.getRoot();
     }
+
+    @Override
+    public void onClick(Conference conference) {
+        NavHostFragment.findNavController(this);
+//                .navigate();
+    }
+
 }

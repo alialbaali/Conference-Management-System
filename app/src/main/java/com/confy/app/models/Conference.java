@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 //@Entity(tableName = "conferences")
 public class Conference {
 
-//    @PrimaryKey
+    //    @PrimaryKey
     public String id;
-    public String name;
+    public String title;
     public String description;
-//    @ColumnInfo(name = "start_date")
+    //    @ColumnInfo(name = "start_date")
     LocalDateTime startDate;
-//    @ColumnInfo(name = "end_date")
+    //    @ColumnInfo(name = "end_date")
     LocalDateTime endDate;
     Paper[] papers;
     User[] users;
@@ -26,14 +26,18 @@ public class Conference {
         return hour + ":00";
     }
 
-    public Conference(String name, String description) {
-        this.name = name;
+    public Conference() {
+
+    }
+
+    public Conference(String title, String description) {
+        this.title = title;
         this.description = description;
     }
 
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {

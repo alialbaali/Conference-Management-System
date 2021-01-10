@@ -1,43 +1,45 @@
 package com.confy.app.conference;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+
+import com.confy.app.models.Conference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ConferenceViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mutableTitle = new MutableLiveData<>("");
-    private final MutableLiveData<String> mutableDescription = new MutableLiveData<>("");
-    private final MutableLiveData<String> mutableInvitationLink = new MutableLiveData<>("");
+    private MutableLiveData<Conference> conference;
     private final MutableLiveData<String> error = new MutableLiveData<>("");
 
-
-    LiveData<String> getTitle() {
-        return Transformations.distinctUntilChanged(mutableTitle);
+    public MutableLiveData<Conference> getConference() {
+        return conference;
     }
 
-    LiveData<String> getDescription() { return Transformations.distinctUntilChanged(mutableDescription); }
+    void fetchConference(String conferenceId) {
+        if (conferenceId == "0") {
+            conference.setValue(new Conference("", ""));
+        } else {
+            FirebaseDatabase.getInstance()
+                    .getReference(conferenceId)
+                    .addValueEventListener(new ValueEventListener() {
 
-    LiveData<String> getInvitationLink() { return Transformations.distinctUntilChanged(mutableInvitationLink); }
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Conference value = dataSnapshot.getValue(Conference.class);
+                            conference.setValue(value);
+                        }
 
-    LiveData<String> getError() {
-        return error;
+                        @Override
+                        public void onCancelled(DatabaseError exception) {
+                            error.setValue(exception.getMessage());
+                        }
+
+                    });
+            ;
+        }
     }
 
-    void setTitle(String value) {
-        mutableTitle.setValue(value);
-    }
-
-    void setDescription(String value) {
-        mutableDescription.setValue(value);
-    }
-
-    void setInvitationLink(String value) {
-        mutableInvitationLink.setValue(value);
-    }
-
-    void CreateConference() {
-//        TODO()
-    }
 }

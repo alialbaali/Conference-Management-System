@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/cc"
-        android:orientation="vertical"
-        android:layout_gravity="bottom"
-        android:padding="@dimen/spacing_normal"
-        tools:context="conference.CreateConferenceFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            style="@style/IntroTextView"
-            android:text="@string/create_conference_head"
-            android:layout_marginBottom="@dimen/spacing_extra_large"
-            android:layout_height="wrap_content" />
+    <data>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_title"
-            style="@style/OutlinedTextInputLayout"
-            android:layout_marginVertical="@dimen/spacing_small"
-            android:hint="@string/title"
+        <variable
+                name="viewModel"
+                type="com.confy.app.conference.CreateConferenceViewModel" />
+    </data>
+
+    <LinearLayout
+            android:id="@+id/cc"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:padding="@dimen/spacing_normal"
+            tools:context="conference.CreateConferenceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_title"
-                style="@style/TextInputEditText"
+        <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:inputType="textPersonName|textCapWords|textAutoComplete|textAutoCorrect"
-                android:imeOptions="actionNext"
+                style="@style/IntroTextView"
+                android:text="@string/create_conference_head"
+                android:layout_marginBottom="@dimen/spacing_extra_large"
                 android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            style="@style/OutlinedTextInputLayout"
-            android:id="@+id/til_description"
-            android:hint="@string/description"
-            android:layout_width="match_parent"
-            android:layout_marginVertical="@dimen/spacing_small"
-            android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_description"
-                style="@style/TextInputEditText"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress|textAutoComplete|textAutoCorrect"
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_title"
+                style="@style/OutlinedTextInputLayout"
+                android:layout_marginVertical="@dimen/spacing_small"
+                android:hint="@string/title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_title"
+                    style="@style/TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:text="@={viewModel.title}"
+                    android:inputType="textPersonName|textCapWords|textAutoComplete|textAutoCorrect"
+                    android:imeOptions="actionNext"
+                    android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/OutlinedTextInputLayout"
+                android:id="@+id/til_description"
+                android:hint="@string/description"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="@dimen/spacing_small"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_description"
+                    style="@style/TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:text="@={viewModel.description}"
+                    android:inputType="textEmailAddress|textAutoComplete|textAutoCorrect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_create"
-            style="@style/PrimaryButton"
-            android:layout_marginVertical="@dimen/spacing_normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/create_conference" />
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_create"
+                style="@style/PrimaryButton"
+                android:layout_marginVertical="@dimen/spacing_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_conference" />
 
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

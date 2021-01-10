@@ -23,7 +23,7 @@
                 android:id="@+id/tv_title"
                 android:textAppearance="?textAppearanceHeadline4"
                 tools:text="Conference"
-                android:text="@{conference.name}"
+                android:text="@{conference.title}"
                 android:layout_marginBottom="@dimen/spacing_extra_small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

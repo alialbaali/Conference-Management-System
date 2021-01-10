@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.confy.app.models.User;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserViewModel extends ViewModel {
 
@@ -32,6 +33,11 @@ public class UserViewModel extends ViewModel {
 
     public MutableLiveData<User> getUser() {
         return user;
+    }
+
+    void signOut() {
+        FirebaseAuth.getInstance()
+                .signOut();
     }
 
 }

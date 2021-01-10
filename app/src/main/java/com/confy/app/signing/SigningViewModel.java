@@ -5,10 +5,16 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.confy.app.models.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public final class SigningViewModel extends ViewModel {
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     @NonNull
     private final MutableLiveData<String> name = new MutableLiveData<>("");
@@ -44,28 +50,27 @@ public final class SigningViewModel extends ViewModel {
         return shouldNavigate;
     }
 
-    void setName(String value) {
-        name.setValue(value);
-    }
-
-    void setEmail(String value) {
-        email.setValue(value);
-    }
-
-    void setPassword(String value) {
-        password.setValue(value);
-    }
-
     void signUp() {
         try {
+            String name = getName().getValue();
             String email = getEmail().getValue();
             String password = getPassword().getValue();
             if (email != null && password != null) {
-                FirebaseAuth.getInstance()
-                        .createUserWithEmailAndPassword(email, password)
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
-                                        shouldNavigate.setValue(true);
+
+                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        String userId = user.getUid();
+
+                                        firebaseDatabase.getReference()
+                                                .child("users")
+                                                .child(userId)
+                                                .setValue(new User(name, email))
+                                                .addOnCompleteListener(resultTask ->
+                                                        shouldNavigate.setValue(true)
+                                                );
+
                                     } else {
                                         error.setValue(task.getException().getMessage());
                                     }
@@ -84,8 +89,7 @@ public final class SigningViewModel extends ViewModel {
             String email = getEmail().getValue();
             String password = getPassword().getValue();
             if (email != null && password != null) {
-                FirebaseAuth.getInstance()
-                        .signInWithEmailAndPassword(email, password)
+                firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnSuccessListener(authResult ->
                                 shouldNavigate.setValue(true)
                         )

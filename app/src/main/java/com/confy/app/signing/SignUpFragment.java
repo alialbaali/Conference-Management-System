@@ -39,8 +39,10 @@ public class SignUpFragment extends Fragment {
                         binding.tilEmail.setError(getString(R.string.empty_email));
                     if (password.isEmpty())
                         binding.tilPassword.setError(getString(R.string.empty_password));
-                    if (!(name.isEmpty() && email.isEmpty() && password.isEmpty()))
+                    if (!(name.isEmpty() && email.isEmpty() && password.isEmpty())) {
+//                        binding.btnSignUp.setEnabled(false);
                         viewModel.signUp();
+                    }
                 }
         );
 
