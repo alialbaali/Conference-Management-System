@@ -4,18 +4,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="sign_up">Başvuru Yap</string>
     <string name="sign_in">Giriş Yap</string>
+    <string name="sign_out">Çıkış Yap</string>
     <string name="no_account">Hesabınız yok mu? Şimdi başvurun.</string>
     <string name="have_account">Zaten hesabınız var mı? Şimdi giriş yapın.</string>
     <string name="name">İsim</string>
     <string name="email">Email</string>
     <string name="password">Şifre</string>
+    <string name="current_password">Şifreniz</string>
+    <string name="new_password">Yeni Şifre</string>
     <string name="password_helper_text">Şifre 8 karakterli olmalı ve en az bir numara içermeli.</string>
     <string name="sign_up_intro_text">Confy\'e hoşgeldiniz.Burada insanlar tanışır,tartışır ve konferensa katılır.</string>
     <string name="empty_name">İsim boş bırakılamaz.y</string>
     <string name="empty_email">Email boş bırakılamaz.</string>
     <string name="empty_password">Şifre boş bırakılamaz.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->>
 
 
     <!-- Conference -->
@@ -24,4 +26,16 @@
     <string name="description">Açıklama</string>
     <string name="create_conference">Konferans oluştur</string>
     <string name="join">Konferansa Katılın</string>
+    <string name="invitation_link">Davet Linkinizi Giriniz</string>
+    <string name="change_profile">Profili Değiştir</string>
+    <string name="update_profile">Profili Güncelle</string>
+    <string name="change_password">Şifreyi Değiştir</string>
+    <string name="update_password">Şifreyi Güncelle</string>
+
+    <!-- Paper -->
+    <string name="paper"> Henüz bir şey yüklemediniz.</string>
+    <string name="update_paper"> Yüklemeyi Güncelle</string>
+    <string name="download_paper"> Yüklemeyi İndir.</string>
+    <string name="upload_paper"> Yükleme</string>
+    <string name="go_back"> Konferansa geri dön</string>
 </resources>
