@@ -24,11 +24,27 @@ public class ConferenceListFragment extends Fragment implements ConferenceListAd
         viewModel = new ViewModelProvider(this).get(ConferenceListViewModel.class);
         adapter = new ConferenceListAdapter(this);
 
+
+        setupObservers();
+        setupListeners();
+
+        return binding.getRoot();
+    }
+
+
+    private void setupObservers() {
         viewModel.getConferences().observe(getViewLifecycleOwner(), conferences -> {
             adapter.submitList(conferences);
         });
+    }
 
-        return binding.getRoot();
+    private void setupListeners() {
+        binding.fab.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(ConferenceListFragmentDirections
+                                .actionConferenceListFragmentToCreateConferenceFragment()
+                        )
+        );
     }
 
     @Override

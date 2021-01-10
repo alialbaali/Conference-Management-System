@@ -43,7 +43,6 @@
             android:id="@+id/CreateConferenceFragment"
             android:name="com.confy.app.conference.CreateConferenceFragment"
             android:label="fragment_create_conference"
-<<<<<<< HEAD
             tools:layout="@layout/fragment_create_conference" />
     <fragment
             android:id="@+id/conferenceListFragment"

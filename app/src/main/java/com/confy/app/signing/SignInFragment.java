@@ -28,6 +28,13 @@ public final class SignInFragment extends Fragment {
 
         setupObservers();
         setupListeners();
+        binding.btnSignIn.setOnClickListener(view -> Snackbar.make(binding.getRoot(), "Sign In Button clicked", Snackbar.LENGTH_INDEFINITE)
+                .show());
+
+        binding.tvSignUp.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
+        );
 
         return binding.getRoot();
     }
