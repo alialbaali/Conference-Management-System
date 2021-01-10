@@ -32,5 +32,21 @@
             android:id="@+id/CreateConferenceFragment"
             android:name="com.confy.app.conference.CreateConferenceFragment"
             android:label="fragment_create_conference"
-            tools:layout="@layout/fragment_create_conference" />
+            tools:layout="@layout/fragment_create_conference" >
+    <action
+        android:id="@+id/action_CreateConferenceFragment_to_ConferenceFragment"
+        app:destination="@id/ConferenceFragment"
+        app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/ConferenceFragment"
+        android:name="com.confy.app.conference.ConferenceFragment"
+        android:label="fragment_conference"
+        tools:layout="@layout/fragment_conference" >
+        <action
+            android:id="@+id/action_CreateConferenceFragment_to_ConferenceFragment"
+
+            app:launchSingleTop="true" />
+    </fragment>
+
 </navigation>
