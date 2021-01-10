@@ -54,6 +54,7 @@ dependencies {
 
     api("com.jakewharton.timber:timber:4.7.1")
     implementation(AndroidX.Room.runtime)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor(AndroidX.Room.compiler)
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
 
