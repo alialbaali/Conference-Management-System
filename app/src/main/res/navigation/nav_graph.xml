@@ -51,6 +51,9 @@
         <action
                 android:id="@+id/action_conferenceListFragment_to_CreateConferenceFragment"
                 app:destination="@id/CreateConferenceFragment" />
+        <action
+                android:id="@+id/action_conferenceListFragment_to_userFragment"
+                app:destination="@id/userFragment" />
     </fragment>
     <fragment
             android:id="@+id/userFragment"
@@ -62,6 +65,12 @@
         <action
                 android:id="@+id/action_userFragment_to_changePasswordBottomSheetDialog"
                 app:destination="@id/changePasswordBottomSheetDialog" />
+        <action
+                android:id="@+id/action_userFragment_to_signUpFragment"
+                app:destination="@id/signUpFragment"
+                app:launchSingleTop="true"
+                app:popUpToInclusive="true"
+                app:popUpTo="@id/signUpFragment" />
     </fragment>
     <dialog
             android:id="@+id/changeProfileBottomSheetDialog"

@@ -24,7 +24,6 @@ public class ConferenceListFragment extends Fragment implements ConferenceListAd
         viewModel = new ViewModelProvider(this).get(ConferenceListViewModel.class);
         adapter = new ConferenceListAdapter(this);
 
-
         setupObservers();
         setupListeners();
 
@@ -44,6 +43,11 @@ public class ConferenceListFragment extends Fragment implements ConferenceListAd
                         .navigate(ConferenceListFragmentDirections
                                 .actionConferenceListFragmentToCreateConferenceFragment()
                         )
+        );
+
+        binding.img.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(ConferenceListFragmentDirections.actionConferenceListFragmentToUserFragment())
         );
     }
 

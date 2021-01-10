@@ -84,6 +84,7 @@
                     android:layout_height="match_parent">
 
                 <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sign_out"
                         android:layout_width="match_parent"
                         android:layout_margin="@dimen/spacing_normal"
                         style="@style/PrimaryButton"

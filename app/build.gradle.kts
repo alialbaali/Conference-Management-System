@@ -57,6 +57,8 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor(AndroidX.Room.compiler)
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
     testImplementation("junit:junit:4.13.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
