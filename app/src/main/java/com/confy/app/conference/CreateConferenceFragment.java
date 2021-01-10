@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.confy.app.BaseBottomSheetDialogFragment;
 import com.confy.app.R;
@@ -27,8 +28,8 @@ public class CreateConferenceFragment extends BaseBottomSheetDialogFragment {
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
         binding.btnCreate.setOnClickListener(view -> {
-                    String title = binding.etTitle.toString();
-                    String description = binding.etDescription.toString();
+                    String title = binding.etTitle.getText().toString();
+                    String description = binding.etDescription.getText().toString();
 
                     if (title.isEmpty()) {
                         binding.tilTitle.setError(getString(R.string.empty_title));
@@ -44,12 +45,15 @@ public class CreateConferenceFragment extends BaseBottomSheetDialogFragment {
 
         viewModel.getError().observe(getViewLifecycleOwner(), error -> {
             if (!error.isEmpty()) {
-                Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT);
+                System.out.println(error);
+                Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT).show();
             }
         });
+
         viewModel.getShouldNavigate().observe(getViewLifecycleOwner(), shouldNavigate -> {
                     if (shouldNavigate) {
-                
+                        NavHostFragment.findNavController(this)
+                                .navigateUp();
                     }
                 }
         );

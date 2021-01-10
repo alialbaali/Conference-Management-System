@@ -4,22 +4,16 @@ import androidx.annotation.Nullable;
 
 import java.time.LocalDateTime;
 
-//@Entity(tableName = "conferences")
 public class Conference {
 
-    //    @PrimaryKey
     public String id;
     public String title;
     public String description;
-    //    @ColumnInfo(name = "start_date")
-    LocalDateTime startDate;
-    //    @ColumnInfo(name = "end_date")
-    LocalDateTime endDate;
-    Paper[] papers;
-    User[] users;
-    public String InvitationLink;
-    public boolean started;
-    public int minimumGrade;
+    public LocalDateTime startDate;
+    public LocalDateTime endDate;
+    public String invitationLink;
+    public boolean isStarted;
+    public int minGrade;
 
     public String getTime() {
         int hour = startDate.getHour();
@@ -44,29 +38,21 @@ public class Conference {
         return description;
     }
 
-    public Paper[] getPapers() {
-        return papers;
-    }
-
-    public User[] getUsers() {
-        return users;
-    }
-
     public String getInvitationLink() {
-        return InvitationLink;
+        return invitationLink;
     }
 
     public boolean isStarted() {
-        return started;
+        return isStarted;
     }
 
-    public int getMinimumGrade() {
-        return minimumGrade;
+    public int getMinGrade() {
+        return minGrade;
     }
 
     @Override
     public boolean equals(@Nullable Object obj) {
         return super.equals(obj);
     }
-// Add the other fields...
+
 }

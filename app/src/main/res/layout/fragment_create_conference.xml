@@ -10,13 +10,22 @@
     </data>
 
     <LinearLayout
-            android:id="@+id/cc"
+            android:id="@+id/ll"
             android:orientation="vertical"
             android:layout_gravity="bottom"
             android:padding="@dimen/spacing_normal"
+            android:background="@drawable/shape_dialog"
             tools:context="conference.CreateConferenceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+        <View
+                android:id="@+id/v_head"
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:background="@drawable/shape_v_head" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"

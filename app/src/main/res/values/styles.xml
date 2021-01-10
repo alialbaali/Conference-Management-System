@@ -3,7 +3,7 @@
 
     <style name="IntroTextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:textAppearance">?textAppearanceHeadline1</item>
-        <item name="android:textColor">?colorSecondary</item>
+        <item name="android:textColor">?colorSecondaryVariant</item>
         <item name="android:alpha">0.85</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -39,7 +39,8 @@
         <item name="android:textAppearance">?textAppearanceSubtitle1</item>
     </style>
 
-    <style name="BottomSheetDialogFragment" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="BottomSheetDialogFragment" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="android:theme">@style/Theme.Confy</item>
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowSoftInputMode">adjustResize</item>

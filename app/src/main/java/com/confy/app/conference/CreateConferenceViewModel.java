@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.confy.app.models.Conference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public final class CreateConferenceViewModel extends ConferenceViewModel {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -33,11 +35,15 @@ public final class CreateConferenceViewModel extends ConferenceViewModel {
     void createConference() {
         try {
             Conference conference = new Conference(title.getValue(), description.getValue());
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("title", conference.getTitle());
+            hashMap.put("description", conference.getDescription());
+
             database
                     .getReference()
                     .child("conferences")
                     .push()
-                    .setValue(conference)
+                    .setValue(hashMap)
                     .addOnSuccessListener(avoid ->
                             shouldNavigate.setValue(true)
                     )

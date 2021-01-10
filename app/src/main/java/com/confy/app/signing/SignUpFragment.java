@@ -1,5 +1,6 @@
 package com.confy.app.signing;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.confy.app.R;
 import com.confy.app.databinding.FragmentSignUpBinding;
+import com.confy.app.utils.SharedPreferencesUtils;
 import com.google.android.material.snackbar.Snackbar;
 
 public final class SignUpFragment extends Fragment {
@@ -85,6 +87,12 @@ public final class SignUpFragment extends Fragment {
         );
         viewModel.shouldNavigate().observe(getViewLifecycleOwner(), sholdNavigate -> {
                     if (sholdNavigate) {
+
+                        requireContext().getSharedPreferences(SharedPreferencesUtils.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+                                .edit()
+                                .putBoolean(SharedPreferencesUtils.IS_USER_SIGNED_IN, true)
+                                .apply();
+
                         NavHostFragment.findNavController(this)
                                 .navigate(SignUpFragmentDirections.actionSignUpFragmentToConferenceListFragment());
                     }
