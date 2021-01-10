@@ -6,6 +6,7 @@
     <!-- Signing -->
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign out</string>
     <string name="no_account">Don\'t have an account? Sign Up</string>
     <string name="have_account">Already have an account? Sign In</string>
     <string name="name">Name</string>
@@ -18,11 +19,13 @@
     <string name="empty_password">Password can\'t be empty</string>
 
     <!-- Conference -->
-    <string name="create_conference_head">Creating new Conference</string>
+    <string name="create_conference_head">Creating new conference</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="create">Create Conference</string>
     <string name="join">Join Conference</string>
-    <string name="invitationLink">Enter Invite Link</string>
+    <string name="invitation_link">Invitation link</string>
+    <string name="change_profile">Change profile</string>
+    <string name="change_password">Change password</string>
 
 </resources>
