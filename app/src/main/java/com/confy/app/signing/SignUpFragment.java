@@ -14,10 +14,10 @@ import com.confy.app.R;
 import com.confy.app.databinding.FragmentSignUpBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-public class SignUpFragment extends Fragment {
-    FragmentSignUpBinding binding;
+public final class SignUpFragment extends Fragment {
 
-    SigningViewModel viewModel;
+    private FragmentSignUpBinding binding;
+    private SigningViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,20 +27,30 @@ public class SignUpFragment extends Fragment {
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
         setupObservers();
+        setupListeners();
+
+        return binding.getRoot();
+    }
+
+    private void setupListeners() {
 
         binding.btnSignUp.setOnClickListener(view -> {
                     String name = binding.etName.getText().toString();
                     String email = binding.etEmail.getText().toString();
                     String password = binding.etPassword.getText().toString();
 
+
                     if (name.isEmpty())
                         binding.tilName.setError(getString(R.string.empty_name));
                     if (email.isEmpty())
                         binding.tilEmail.setError(getString(R.string.empty_email));
-                    if (password.isEmpty())
+                    if (password.isEmpty()) {
                         binding.tilPassword.setError(getString(R.string.empty_password));
-                    if (!(name.isEmpty() && email.isEmpty() && password.isEmpty())) {
-//                        binding.btnSignUp.setEnabled(false);
+                    } else if (!verifyPassword(password)) {
+                        binding.tilPassword.setError(getString(R.string.password_helper_text));
+                    }
+                    if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && verifyPassword(password)) {
+                        binding.btnSignUp.setEnabled(false);
                         viewModel.signUp();
                     }
                 }
@@ -51,7 +61,6 @@ public class SignUpFragment extends Fragment {
                         .navigate(SignUpFragmentDirections.actionSignUpFragmentToSignInFragment())
         );
 
-        return binding.getRoot();
     }
 
     private void setupObservers() {
@@ -74,18 +83,25 @@ public class SignUpFragment extends Fragment {
                     }
                 }
         );
-        viewModel.shouldNavigate().observe(getViewLifecycleOwner(), value -> {
-                    if (value) {
-                        Snackbar.make(binding.getRoot(), "Congrats you signed up!", Snackbar.LENGTH_INDEFINITE)
+        viewModel.shouldNavigate().observe(getViewLifecycleOwner(), sholdNavigate -> {
+                    if (sholdNavigate) {
+                        NavHostFragment.findNavController(this)
+                                .navigate(SignUpFragmentDirections.actionSignUpFragmentToConferenceListFragment());
+                    }
+                }
+        );
+        viewModel.getError().observe(getViewLifecycleOwner(), error -> {
+                    if (!error.isEmpty()) {
+                        binding.btnSignUp.setEnabled(true);
+                        Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT)
                                 .show();
                     }
                 }
-//                        NavHostFragment.findNavController(this).navigate()
         );
-        viewModel.getError().observe(getViewLifecycleOwner(), error ->
-                Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT)
-                        .show()
-        );
+    }
+
+    private boolean verifyPassword(String password) {
+        return password.matches("^(?=.*?[0-9]).{8,}$");
     }
 
 }

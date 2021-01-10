@@ -8,19 +8,85 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.confy.app.R;
 import com.confy.app.databinding.FragmentSignInBinding;
+import com.google.android.material.snackbar.Snackbar;
 
-public class SignInFragment extends Fragment {
+public final class SignInFragment extends Fragment {
 
-    FragmentSignInBinding binding;
-    SigningViewModel viewModel;
+    private FragmentSignInBinding binding;
+    private SigningViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSignInBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(SigningViewModel.class);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+        binding.setViewModel(viewModel);
+
+        setupObservers();
+        setupListeners();
 
         return binding.getRoot();
+    }
+
+    private void setupListeners() {
+
+        binding.btnSignIn.setOnClickListener(view -> {
+
+                    String email = binding.etEmail.getText().toString();
+                    String password = binding.etPassword.getText().toString();
+
+                    if (email.isEmpty())
+                        binding.tilEmail.setError(getString(R.string.empty_email));
+                    if (password.isEmpty())
+                        binding.tilPassword.setError(getString(R.string.empty_password));
+
+                    if (!email.isEmpty() && !password.isEmpty()) {
+                        binding.btnSignIn.setEnabled(false);
+                        viewModel.signIn();
+                    }
+
+                }
+        );
+
+
+        binding.tvSignUp.setOnClickListener(view ->
+                NavHostFragment.findNavController(this)
+                        .navigate(SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
+        );
+    }
+
+    private void setupObservers() {
+        viewModel.getEmail().observe(getViewLifecycleOwner(), email -> {
+                    if (!email.isEmpty()) {
+                        binding.tilEmail.setError(null);
+                    }
+                }
+        );
+
+        viewModel.getPassword().observe(getViewLifecycleOwner(), password -> {
+                    if (!password.isEmpty()) {
+                        binding.tilPassword.setError(null);
+                    }
+                }
+        );
+        viewModel.shouldNavigate().observe(getViewLifecycleOwner(), sholdNavigate -> {
+                    if (sholdNavigate) {
+                        NavHostFragment.findNavController(this)
+                                .navigate(SignInFragmentDirections.actionSignInFragmentToConferenceListFragment());
+                    }
+                }
+        );
+        viewModel.getError().observe(getViewLifecycleOwner(), error -> {
+                    if (!error.isEmpty()) {
+                        binding.btnSignIn.setEnabled(true);
+                        Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
+                }
+        );
     }
 }

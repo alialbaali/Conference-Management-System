@@ -13,6 +13,11 @@
                 android:id="@+id/action_signUpFragment_to_signInFragment"
                 app:destination="@id/SignInFragment"
                 app:launchSingleTop="true" />
+        <action
+                android:id="@+id/action_signUpFragment_to_conferenceListFragment"
+                app:destination="@id/conferenceListFragment"
+                app:popUpTo="@id/conferenceListFragment"
+                app:popUpToInclusive="true" />
     </fragment>
     <fragment
             android:id="@+id/SignInFragment"
@@ -25,6 +30,12 @@
                 app:launchSingleTop="true"
                 app:popUpTo="@id/signUpFragment"
                 app:popUpToInclusive="true" />
+        <action
+                android:id="@+id/action_SignInFragment_to_conferenceListFragment"
+                app:destination="@id/conferenceListFragment"
+                app:popUpTo="@id/conferenceListFragment"
+                app:popUpToInclusive="true"
+                app:launchSingleTop="true" />
     </fragment>
 
 
@@ -33,4 +44,12 @@
             android:name="com.confy.app.conference.CreateConferenceFragment"
             android:label="fragment_create_conference"
             tools:layout="@layout/fragment_create_conference" />
+    <fragment
+            android:id="@+id/conferenceListFragment"
+            android:name="com.confy.app.list.ConferenceListFragment"
+            android:label="ConferenceListFragment" >
+        <action
+                android:id="@+id/action_conferenceListFragment_to_CreateConferenceFragment"
+                app:destination="@id/CreateConferenceFragment" />
+    </fragment>
 </navigation>
