@@ -1,4 +1,4 @@
-package com.confy.app.conference;
+package com.confy.app.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

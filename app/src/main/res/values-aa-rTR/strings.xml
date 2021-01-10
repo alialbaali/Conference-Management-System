@@ -22,6 +22,6 @@
     <string name="create_conference_head">Yeni konferans oluştur.</string>
     <string name="title">Title</string>
     <string name="description">Açıklama</string>
-    <string name="create">Konferans oluştur</string>
+    <string name="create_conference">Konferans oluştur</string>
     <string name="join">Konferansa Katılın</string>
 </resources>

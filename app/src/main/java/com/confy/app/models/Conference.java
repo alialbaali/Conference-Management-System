@@ -1,8 +1,6 @@
 package com.confy.app.models;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.annotation.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -10,18 +8,23 @@ import java.time.LocalDateTime;
 public class Conference {
 
 //    @PrimaryKey
-    String id;
-    String name;
-    String description;
+    public String id;
+    public String name;
+    public String description;
 //    @ColumnInfo(name = "start_date")
     LocalDateTime startDate;
 //    @ColumnInfo(name = "end_date")
     LocalDateTime endDate;
     Paper[] papers;
     User[] users;
-    String InvitationLink;
-    boolean started;
-    int minimumGrade;
+    public String InvitationLink;
+    public boolean started;
+    public int minimumGrade;
+
+    public String getTime() {
+        int hour = startDate.getHour();
+        return hour + ":00";
+    }
 
     public Conference(String name, String description) {
         this.name = name;
@@ -57,5 +60,9 @@ public class Conference {
         return minimumGrade;
     }
 
-    // Add the other fields...
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
+    }
+// Add the other fields...
 }

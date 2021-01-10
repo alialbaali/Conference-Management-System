@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="conference"
+                type="com.confy.app.models.Conference" />
+    </data>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:padding="@dimen/spacing_normal"
+            android:layout_margin="@dimen/spacing_normal"
+            android:elevation="@dimen/elevation_extra_small"
+            android:background="@drawable/shape_conference_item"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_title"
+                android:textAppearance="?textAppearanceHeadline4"
+                tools:text="Conference"
+                android:text="@{conference.name}"
+                android:layout_marginBottom="@dimen/spacing_extra_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_description"
+                android:textAppearance="?textAppearanceSubtitle2"
+                android:layout_marginTop="@dimen/spacing_extra_small"
+                android:layout_marginBottom="@dimen/spacing_extra_small"
+                tools:text="Description"
+                android:text="@{conference.description}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_start_date"
+                android:textAppearance="?textAppearanceBody2"
+                android:layout_marginTop="@dimen/spacing_extra_small"
+                android:layout_marginBottom="@dimen/spacing_extra_small"
+                android:layout_gravity="end"
+                tools:text="Starts at 18:00"
+                android:text="@{conference.time}"
+                android:textStyle="italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</layout>
